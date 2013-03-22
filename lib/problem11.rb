@@ -1,5 +1,5 @@
 #11. Find the highest product of four adjacent elements, along cardinals or diagonals.
-grid=
+grid =
 "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
 81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
@@ -19,29 +19,28 @@ grid=
 04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36
 20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
-01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48".split("\n").map{|i| i.split(" ").map{|j| Integer(j.gsub(/0(\d)/,'\1'))}}
+01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48".split("\n").map{|i| i.split(" ").map{|j| Integer(j.gsub(/0(\d)/, '\1'))}}
 # We must check each of the four types of 4-number group: horiz, vert, and diagonals.
 # A 4-tuple of [v,h] offsets specifies each type.
-[ [ [0,0],[0,1],[0,2],[0,3] ],
-  [ [0,0],[1,0],[2,0],[3,0] ],
-  [ [0,0],[1,1],[2,2],[3,3] ],
-  [ [3,0],[2,1],[1,2],[0,3] ] ].inject(0) do |result,offsets|
+[[[0, 0], [0, 1], [0, 2], [0, 3]],
+[[0, 0], [1, 0], [2, 0], [3, 0]],
+[[0, 0], [1, 1], [2, 2], [3, 3]],
+[[3, 0], [2, 1], [1, 2], [0, 3]]].inject(0) do |result, offsets|
   # For each group type, the number of inner and outer (i.e. column and row) iterations
   # depends on that type's max [v,h] offsets.
   num_iters_f = ->(dim_arr,idx){
     trim_off = offsets.map{|o| o[idx]}.max
-    dim_arr.length-1-trim_off
+    dim_arr.length - 1 - trim_off
   }
-  numrows=num_iters_f.call(grid,0)
-  numcols=num_iters_f.call(grid[0],1)
+  numrows=num_iters_f.call(grid, 0)
+  numcols=num_iters_f.call(grid[0], 1)
   # Find the max product for each group type.
-  max_over_type=(0..numrows).inject(0) do |result,row|
-    max_over_row=(0..numcols).inject(0) do |result,col|
-      group=offsets.map{|i,j| grid[row+i][col+j]}
-      result=[result,group.inject(:*)].max
+  max_over_type=(0..numrows).inject(0) do |result, row|
+    max_over_row=(0..numcols).inject(0) do |result, col|
+      group = offsets.map{|i, j| grid[row + i][col + j]}
+      result = [result, group.inject(:*)].max
     end
-    result=[result,max_over_row].max
+    result = [result, max_over_row].max
   end
-  result=[result,max_over_type].max
+  result = [result, max_over_type].max
 end
-

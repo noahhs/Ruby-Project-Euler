@@ -1,7 +1,7 @@
 require 'sinatra'
 # based on: http://stackoverflow.com/questions/735073/best-way-to-require-all-files-from-a-directory-in-ruby
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
-
+#require 'C:\Users\Noah\Documents\repos\project_euler_2nd\lib\problem2.rb'
 get '/' do
   "Pick a Project Euler problem.
   <a href='/1/'>1</a>
@@ -25,10 +25,7 @@ get '/' do
   <a href='/19/'>19</a>"
 end
 
-#get '/1/' do
-#  'hello ' + '1'
-#end
 get '/*/' do
   number = params[:splat][0]
-  "The answer is " + String(Kernel.send('p' + number))
+  "The answer is " + String(EulerProblem.new.send('p' + number))
 end

@@ -12,7 +12,7 @@ class EulerProblem
       if p > s
         if i > $primes.last
           $primes << i
-  	$lcm_exps << 0
+  	      $lcm_exps << 0
         end
         return true
       elsif i % p == 0

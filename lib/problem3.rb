@@ -1,5 +1,7 @@
 class EulerProblem
   #3. Largest prime factor of 600851475143.
+  # I was lazy and imported the prime library, but One could also write an
+  # is_prime? method from scratch
   require 'prime'
 
   def p3

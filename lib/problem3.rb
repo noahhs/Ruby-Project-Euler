@@ -1,43 +1,21 @@
 class EulerProblem
   #3. Largest prime factor of 600851475143.
+  require 'prime'
+
   def p3
-    $primes = [2]
+    find_largest_prime_factor 600851475143
+  end
 
-    def isprime(i)
-      s = Integer(Math.sqrt(i))
-      for p in $primes
-        if p > s
-          if i > $primes.last
-            $primes << i
-          end
-          return true
-        elsif i % p == 0
-          return false
-        end
-      end
+  private
+  def find_largest_prime_factor(big_number)
+    root = Math.sqrt(big_number).round
+
+    2.upto(root) do |factor|
+      next unless factor.prime?
+
+      big_number = big_number / factor if big_number % factor == 0
+
+      return factor if big_number == 1
     end
-
-    num = 600851475143
-    s = Integer(Math.sqrt(num))
-    n = 2
-    rem = num
-    largest = 0
-
-    while n <= s
-      if isprime(n)
-        if rem % n == 0
-          largest = n
-          rem /= n
-        elsif n == 2
-          n += 1
-        else
-          n += 2
-        end
-      else
-        n += 2
-      end
-    end
-
-    largest
   end
 end

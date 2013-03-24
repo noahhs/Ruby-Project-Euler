@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each {|file| require file }
+require 'benchmark'
 
 describe EulerProblem, "Testing Euler Problems" do
   def setup
@@ -80,5 +81,14 @@ describe EulerProblem, "Testing Euler Problems" do
 
   def test_problem_nineteen_answer
     assert_equal @problem.p19, 0
+  end
+
+  Benchmark.bm do|b|
+    @problem = EulerProblem.new
+    # TODO Replace with a range when problem five is fixed.
+    %w[1 2 3 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19].each do |number|
+      problem = "p#{number}"
+      b.report(problem) { 3.times { @problem.send(:"#{problem}") }}
+    end
   end
 end

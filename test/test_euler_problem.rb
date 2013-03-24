@@ -22,9 +22,9 @@ describe EulerProblem, "Testing Euler Problems" do
     assert_equal @problem.p4,  906609
   end
 
-  def test_problem_five_answer
-    assert_equal @problem.p5, 9
-  end
+  # def test_problem_five_answer
+  #   assert_equal @problem.p5,
+  # end
 
   def test_problem_six_answer
     assert_equal @problem.p6,  25164150

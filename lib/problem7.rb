@@ -6,7 +6,12 @@ def isdivided(n,a)
     return false if p >= sn
   end
 end
+
+def p7
+
 primes=[2, 3]
 n = 3
 primes << n if not isdivided(n += 2, primes) while primes.length < 10000
+primes.last
 
+end

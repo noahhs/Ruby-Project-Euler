@@ -1,6 +1,9 @@
 #12. First triangle number to have over 500 divisors.
+def p12
+
 primes = [2]
 n = 2
+result = 0
 loop do
   # Build primes list.
   if n.odd?
@@ -30,8 +33,11 @@ loop do
   end
   # Now update the number of divisors
   if (exps.map{|e| e + 1} << 1).inject(:*) > 500
-    puts t
+    result =  t
     break
   end
   n += 1
+end
+result
+
 end

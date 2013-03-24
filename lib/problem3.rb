@@ -1,5 +1,7 @@
 #3. Largest prime factor of 600851475143.
 
+def p3
+
 $primes = [2]
 def isprime(i)
   s = Integer(Math.sqrt(i))
@@ -35,3 +37,4 @@ while n <= s
 end
 largest
 
+end

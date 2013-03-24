@@ -1,4 +1,6 @@
 #The maximum total from top to bottom.
+def p18
+
 a =
 "75
 95 64
@@ -36,4 +38,4 @@ prods.inject(0) do |result, prod|
   [result, prod].max
 end
 
-  
+end

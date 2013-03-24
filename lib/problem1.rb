@@ -1,4 +1,5 @@
 #1. Sum of multiples of 3 or 5 below 1000.
+def p1
 
 n = 1
 sum = 0
@@ -8,5 +9,6 @@ while n < 1000
   end
   n += 1
 end
-puts sum
+sum
 
+end

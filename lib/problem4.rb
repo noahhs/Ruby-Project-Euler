@@ -1,4 +1,6 @@
 #4. Largest palindrome made from the product of two three-digit numbers.
+def p4 
+
 i = 100
 j = 100
 highest = 0
@@ -15,3 +17,4 @@ while i < 1000
 end
 highest
 
+end

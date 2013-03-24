@@ -1,4 +1,6 @@
 # 14. Which number under 1,000,000 produces the longest Collatz sequence?
+def p14
+
 (1..1000000).inject([0, 0]) do |result, n|
   k, nk = 0, n
   while nk != 1
@@ -11,4 +13,6 @@
   end
   result = [k,n] if k > result[0]
   result
+end [1]
+
 end

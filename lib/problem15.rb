@@ -1,5 +1,5 @@
 # How many lattice paths are there through an 20x20 grid?
-
+def p15
 "
 Problem analysis. Let's generalize to n x n.
 There are n+1 places a horizontal movement can go: (before first vertical movement..after final vertical movement).
@@ -20,3 +20,5 @@ So it works. Then the solution is:
 C(20 + 21 - 1, 20) = 40! / (20! * 20!) = product(21..40) / product(1..20)
 "
 (21..40).inject(:*) / (1..20).inject(:*)
+
+end

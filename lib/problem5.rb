@@ -28,6 +28,9 @@ def exp_of_in(p, n)
   end
   return exp
 end
+
+def p5
+
 $primes = [2]
 $lcm_exps = [0]
 for i in (2..20)
@@ -44,3 +47,4 @@ for i in (2..20)
 end
 $primes.zip($lcm_exps).map{|i, j| i ** j}.inject(:*)
 
+end

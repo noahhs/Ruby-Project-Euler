@@ -1,6 +1,8 @@
 #10. Sum of primes below 2 million.
+def p10
+
 primes = [2]
-1000000.times do |j|
+999998.times do |j|
   i = 2 * j + 3
   s = Integer(Math.sqrt(i))
   catch (:next) do
@@ -13,4 +15,6 @@ primes = [2]
     end
   end
 end
+primes.inject(:+)
 
+end

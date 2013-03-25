@@ -30,5 +30,5 @@ end
 #end
 get '/*/' do
   number = params[:splat][0]
-  "The answer is " + String(Kernel.send('p' + number))
+  "The answer is " + String(EulerProblem.new.send('p' + number))
 end

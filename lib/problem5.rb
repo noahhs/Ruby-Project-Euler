@@ -1,5 +1,65 @@
+class Integer
+  def exp_of_in(n)
+    rem, exp = n, 0
+    loop do
+      if rem % self == 0
+        rem /= self
+        exp += 1
+      else
+        return exp
+      end
+    end
+    exp
+  end
+end
 class EulerProblem
   #5. LCM [1,20]
+  def p5
+    (3..20).inject([[2, 0], [3,0]]) do |lcm_fact, n|
+
+      #print "***** n = "
+      #print n
+      #print " *****\n"
+
+      sqrt_n = Math.sqrt(n).round
+      divisor_found = false
+
+      lcm_fact.each_with_index.inject(lcm_fact) do |fact, ((p, exp), i)|
+      # Find the prime factorization of n.
+      # Update the LCM prime factorization with new primes, as they are discovered,
+      # and new exponenets, so that each one at least equals the one for this n.
+        #p, exp = p_exp[0], p_exp[1]
+
+        #print "p = "
+        #print p
+        #print ", fact = "
+        #print fact
+        #print "\n"
+
+        new_exp = p.exp_of_in(n)
+        divisor_found = true if new_exp > 0
+        fact[i] = [p, new_exp] if new_exp > exp
+        
+        if p > sqrt_n
+          # Exponents of all relevant primes have been found--except that n may itself be prime.
+          break(divisor_found ? fact : fact << [n, 1])
+        end
+
+        fact
+      end
+
+      if n == 20
+        lcm_fact.inject(1) {|prod, (p, exp)| prod * (p ** exp)}
+      else
+        lcm_fact
+      end
+
+    end
+  end
+end
+
+
+=begin
 
   #Find the maximum exponent of each prime.
   #That will be the exponent of that prime in the LCM.
@@ -51,3 +111,5 @@ class EulerProblem
 
   end
 end
+
+=end
